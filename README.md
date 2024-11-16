@@ -24,7 +24,7 @@ Table Relationship: Optimized structure based on MER and DER diagrams.
 How to execute the project
 
 Clone the repository:
-git clone https://github.com/seu-usuario/DatabaseSQLServer.git
+git clone https://github.com/Scaglia05/CRUD_FHO
 Configure the SQL Server database connection in the appropriate configuration file.
 
 Open the Package Manager Console in Visual Studio and run the following commands to configure the tables in the database:
