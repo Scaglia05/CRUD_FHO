@@ -1,0 +1,51 @@
+﻿@model Vendedor
+
+@{
+    ViewData["Title"] = "Detalhes do Vendedor";
+}
+
+<h1 class="text-center my-4">Detalhes do Vendedor</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="border p-4 rounded shadow-sm bg-light">
+            <h4 class="text-center mb-4">Informações do Vendedor</h4>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Nome_Vendedor)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Nome_Vendedor)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.CRECI_Vendedor)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.CRECI_Vendedor)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Telefone_Vendedor)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Telefone_Vendedor)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Email_Vendedor)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Email_Vendedor)
+                </dd>
+            </dl>
+
+            <div class="text-center mt-4">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning btn-lg">Editar</a> |
+                <a asp-action="Index" class="btn btn-link btn-lg">Voltar para a Lista</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+﻿@model Cliente
+
+@{
+    ViewData["Title"] = "Detalhes do Cliente";
+}
+
+<h1 class="text-center mb-4">Detalhes do Cliente</h1>
+
+<div class="container">
+    <h4>Informações do Cliente</h4>
+    <hr />
+
+    <!-- Detalhes do Cliente -->
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Email_Cliente)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Email_Cliente)
+        </dd>
+    </dl>
+
+    <!-- Ações do Cliente -->
+    <div class="d-flex justify-content-start">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning me-2">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

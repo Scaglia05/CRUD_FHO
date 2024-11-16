@@ -1,0 +1,25 @@
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace ImoveisApi2.Models {
+    public class Cliente {
+
+        [Key]
+        public int Id { get; set; }
+
+        [DisplayName("Nome Completo")]
+        public string Nome { get; set; }
+
+        [DisplayName("CPF")]
+        public string CPF { get; set; }
+
+        [DisplayName("Endereço")]
+        public string Endereco { get; set; }
+
+        [DisplayName("Data de Nascimento")]
+        public DateOnly DataNascimento { get; set; }
+
+        [DisplayName("Email")]
+        public string Email_Cliente { get; set; }
+    }
+}

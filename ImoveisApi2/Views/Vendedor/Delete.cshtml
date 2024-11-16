@@ -1,0 +1,61 @@
+﻿@model Imovel
+
+@{
+    ViewData["Title"] = "Excluir";
+}
+
+<h1 class="text-center my-4">Excluir Imóvel</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="border p-4 rounded shadow-sm bg-light">
+            <h3 class="text-center mb-4">Tem certeza que deseja excluir este item?</h3>
+
+            <h4 class="mb-4">Detalhes do Imóvel</h4>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Endereco_Imovel)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Endereco_Imovel)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.AreaTotal_Imovel)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.AreaTotal_Imovel)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Tipo)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Tipo)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.ValorTotal)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.ValorTotal)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete" class="text-center mt-4">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger btn-lg">Excluir</button>
+                <a asp-action="Index" class="btn btn-link btn-lg ms-3">Voltar para a Lista</a>
+            </form>
+        </div>
+    </div>
+</div>

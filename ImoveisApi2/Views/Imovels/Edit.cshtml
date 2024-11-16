@@ -1,0 +1,122 @@
+﻿@model Imovel
+
+@{
+    ViewData["Title"] = "Editar Imóvel";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4 title-style">Editar Imóvel</h1>
+
+    <div class="border p-4 rounded shadow-sm bg-light">
+        <h4 class="text-primary">Informações do Imóvel</h4>
+        <hr />
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="Endereco_Imovel" class="control-label font-weight-bold"></label>
+                <input asp-for="Endereco_Imovel" class="form-control" placeholder="Endereço do imóvel" />
+                <span asp-validation-for="Endereco_Imovel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AreaTotal_Imovel" class="control-label font-weight-bold"></label>
+                <input asp-for="AreaTotal_Imovel" class="form-control" placeholder="Área total do imóvel (m²)" />
+                <span asp-validation-for="AreaTotal_Imovel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label font-weight-bold"></label>
+                <select asp-for="Tipo" class="form-control">
+                    <option value="">Selecione o tipo de imóvel</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Terreno">Terreno</option>
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status" class="control-label font-weight-bold"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="">Selecione o status do imóvel</option>
+                    <option value="Disponível">Disponível</option>
+                    <option value="Indisponível">Indisponível</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ValorTotal" class="control-label font-weight-bold"></label>
+                <input asp-for="ValorTotal" class="form-control" placeholder="Valor total do imóvel" />
+                <span asp-validation-for="ValorTotal" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Salvar" class="btn btn-success btn-lg" />
+            </div>
+        </form>
+        <div class="text-center mt-4">
+            <a asp-action="Index" class="btn btn-outline-secondary btn-lg">Voltar para a Lista</a>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-transparent w-100"></button>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-transparent w-100"></button>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    .btn-transparent {
+        background-color: transparent;
+        border: transparent; /* Ajuste a cor da borda conforme necessário */
+        color: #000; /* Cor do texto (ajuste conforme desejado) */
+    }
+
+    /* Estilo para o título */
+    .title-style {
+        font-size: 36px;
+        font-weight: bold;
+        color: #007bff; /* Cor do título */
+    }
+
+    /* Estilo para os campos do formulário */
+    .form-group label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control {
+        font-size: 1.1rem;
+        border-radius: 5px;
+    }
+
+    /* Estilo para os botões */
+    .btn-success {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .btn-outline-secondary {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    /* Estilo para a borda e sombra do box */
+    .border {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+

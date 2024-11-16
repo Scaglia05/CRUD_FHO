@@ -1,0 +1,166 @@
+﻿@using System.Reflection
+@using System.ComponentModel
+@using static ImoveisApi2.Models.Enums
+@model Imovel
+
+@{
+    ViewData["Title"] = "Criar Imóvel";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4 title-style">Cadastrar Imóvel</h1>
+    <h4 class="text-muted text-center mb-4">Preencha as informações do imóvel abaixo</h4>
+    <hr class="custom-hr" />
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Campo Endereço -->
+                <div class="form-group mb-3">
+                    <label asp-for="Endereco_Imovel" class="control-label">Endereço</label>
+                    <input asp-for="Endereco_Imovel" class="form-control" placeholder="Digite o endereço do imóvel" />
+                    <span asp-validation-for="Endereco_Imovel" class="text-danger"></span>
+                </div>
+
+                <!-- Campo Área Total -->
+                <div class="form-group mb-3">
+                    <label asp-for="AreaTotal_Imovel" class="control-label">Área Total (m²)</label>
+                    <input asp-for="AreaTotal_Imovel" class="form-control" placeholder="Informe a área total" />
+                    <span asp-validation-for="AreaTotal_Imovel" class="text-danger"></span>
+                </div>
+
+                <!-- Campo Tipo -->
+                <div class="form-group mb-3">
+                    <label asp-for="Tipo" class="control-label">Tipo de Imóvel</label>
+                    <select asp-for="Tipo" class="form-control">
+                        <option value="">Selecione o tipo</option>
+                        @foreach (var tipo in Enum.GetValues(typeof(Tipo_Imovel))) {
+                            var tipoDescricao = tipo.GetType()
+                            .GetMember(tipo.ToString())
+                            .FirstOrDefault()?
+                            .GetCustomAttribute<DescriptionAttribute>()?
+                            .Description ?? tipo.ToString();
+                            <option value="@tipo">@tipoDescricao</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Tipo" class="text-danger"></span>
+                </div>
+
+                <!-- Campo Status -->
+                <div class="form-group mb-3">
+                    <label asp-for="Status" class="control-label">Status</label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="">Selecione o status</option>
+                         @foreach (var status in Enum.GetValues(typeof(Status_Imovel))) {
+                            var statusDescricao = status.GetType()
+                            .GetMember(status.ToString())
+                            .FirstOrDefault()?
+                            .GetCustomAttribute<DescriptionAttribute>()?
+                            .Description ?? status.ToString();
+                            <option value="@status">@statusDescricao</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+
+                <!-- Campo Valor Total -->
+                <div class="form-group mb-3">
+                    <label asp-for="ValorTotal" class="control-label">Valor Total</label>
+                    <input asp-for="ValorTotal" class="form-control" placeholder="Digite o valor total do imóvel" />
+                    <span asp-validation-for="ValorTotal" class="text-danger"></span>
+                </div>
+
+                <!-- Botão de Submit -->
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar Imóvel" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a asp-action="Index" class="btn btn-outline-secondary btn-lg">Voltar para a Lista</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-5 py-4 bg-dark text-white text-center">
+    <div class="container">
+        <p class="mb-0">© 2024 FHO -> Todos os direitos reservados</p>
+        <p><a href="https://www.suaempresa.com.br" class="text-white">Visite nosso site</a></p>
+    </div>
+</footer>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    /* Estilo para o título principal */
+    .title-style {
+        font-size: 36px;
+        font-weight: bold;
+        color: #007bff; /* Cor principal */
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px; /* Espaçamento inferior */
+    }
+
+    /* Estilo para o subtítulo */
+    .subtitle-style {
+        font-size: 18px;
+        color: #6c757d;
+        font-weight: 500;
+    }
+
+    /* Personalizando a linha (hr) */
+    .custom-hr {
+        border-top: 3px solid #007bff;
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    /* Botões */
+    .btn-outline-secondary {
+        width: 200px;
+        font-weight: bold;
+    }
+
+    /* Formulário */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    input.form-control, select.form-control {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+        input.form-control:focus, select.form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    /* Estilos do Footer */
+    .footer {
+        background-color: #343a40;
+        color: white;
+        font-size: 14px;
+    }
+
+        .footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+            .footer a:hover {
+                text-decoration: underline;
+            }
+</style>

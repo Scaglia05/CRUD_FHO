@@ -1,0 +1,67 @@
+﻿@model Cliente
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center mb-4">Excluir Cliente</h1>
+
+<h3 class="text-center text-danger">Tem certeza de que deseja excluir este cliente?</h3>
+
+<div class="container">
+    <h4>Cliente</h4>
+    <hr />
+
+    <!-- Detalhes do Cliente -->
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Email_Cliente)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Email_Cliente)
+        </dd>
+    </dl>
+
+    <!-- Formulário para Exclusão -->
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="d-flex justify-content-start">
+            <button type="submit" class="btn btn-danger me-2">Excluir</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

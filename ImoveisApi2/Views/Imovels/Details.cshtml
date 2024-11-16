@@ -1,0 +1,96 @@
+﻿@model Imovel
+
+@{
+    ViewData["Title"] = "Detalhes do Imóvel";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4 title-style">Detalhes do Imóvel</h1>
+
+    <div class="border p-4 rounded shadow-sm bg-light">
+        <h4 class="text-primary">Informações do Imóvel</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Endereco_Imovel)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Endereco_Imovel)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.AreaTotal_Imovel)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.AreaTotal_Imovel)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Tipo)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Tipo)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.ValorTotal)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.ValorTotal)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning btn-lg">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-lg ml-3">Voltar para a Lista</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+    <style>
+        /* Estilo para o título */
+        .title-style {
+            font-size: 36px;
+            font-weight: bold;
+            color: #007bff; /* Cor do título para destacar */
+        }
+
+        /* Estilo para as informações do imóvel */
+        .dl-row dt {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .dl-row dd {
+            font-size: 1.1rem;
+        }
+
+        /* Estilo para os botões */
+        .btn-warning {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .btn-outline-secondary {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Estilo para a borda e sombra do box */
+        .border {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
