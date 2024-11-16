@@ -17,6 +17,14 @@
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
+@* 
+                <!-- Campo ID do Vendedor -->
+                <div class="form-group mb-3">
+                    <label asp-for="Id_Vendedor" class="control-label">ID do Vendedor</label>
+                    <input asp-for="Id_Vendedor" class="form-control" placeholder="Digite o ID do vendedor" />
+                    <span asp-validation-for="Id_Vendedor" class="text-danger"></span>
+                </div> *@
+
                 <!-- Campo Endereço -->
                 <div class="form-group mb-3">
                     <label asp-for="Endereco_Imovel" class="control-label">Endereço</label>

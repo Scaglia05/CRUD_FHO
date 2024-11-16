@@ -1,60 +1,57 @@
-﻿@model Imovel
+﻿@model ImoveisApi2.Models.Vendedor
 
 @{
-    ViewData["Title"] = "Excluir";
+    ViewData["Title"] = "Excluir Vendedor";
 }
 
-<h1 class="text-center my-4">Excluir Imóvel</h1>
+<h1 class="text-center my-4">Excluir Vendedor</h1>
 
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="border p-4 rounded shadow-sm bg-light">
-            <h3 class="text-center mb-4">Tem certeza que deseja excluir este item?</h3>
+            <h3 class="text-center mb-4 text-danger">Tem certeza que deseja excluir este vendedor?</h3>
 
-            <h4 class="mb-4">Detalhes do Imóvel</h4>
+            <h4 class="mb-4 text-primary">Detalhes do Vendedor</h4>
             <hr />
 
             <dl class="row">
-                <dt class="col-sm-3 font-weight-bold">
-                    @Html.DisplayNameFor(model => model.Endereco_Imovel)
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Nome_Vendedor)
                 </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Endereco_Imovel)
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Nome_Vendedor)
                 </dd>
 
-                <dt class="col-sm-3 font-weight-bold">
-                    @Html.DisplayNameFor(model => model.AreaTotal_Imovel)
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.CRECI_Vendedor)
                 </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.AreaTotal_Imovel)
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CRECI_Vendedor)
                 </dd>
 
-                <dt class="col-sm-3 font-weight-bold">
-                    @Html.DisplayNameFor(model => model.Tipo)
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Telefone_Vendedor)
                 </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Tipo)
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Telefone_Vendedor)
                 </dd>
 
-                <dt class="col-sm-3 font-weight-bold">
-                    @Html.DisplayNameFor(model => model.Status)
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Email_Vendedor)
                 </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Status)
-                </dd>
-
-                <dt class="col-sm-3 font-weight-bold">
-                    @Html.DisplayNameFor(model => model.ValorTotal)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.ValorTotal)
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Email_Vendedor)
                 </dd>
             </dl>
 
-            <form asp-action="Delete" class="text-center mt-4">
+            <form asp-action="Delete" method="post" class="text-center mt-4">
                 <input type="hidden" asp-for="Id" />
-                <button type="submit" class="btn btn-danger btn-lg">Excluir</button>
-                <a asp-action="Index" class="btn btn-link btn-lg ms-3">Voltar para a Lista</a>
+                <button type="submit" class="btn btn-danger btn-lg me-3">
+                    <i class="bi bi-trash"></i> Excluir
+                </button>
+                <a asp-action="Index" class="btn btn-secondary btn-lg">
+                    <i class="bi bi-arrow-left"></i> Voltar para a Lista
+                </a>
             </form>
         </div>
     </div>

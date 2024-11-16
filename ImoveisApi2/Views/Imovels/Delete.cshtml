@@ -53,11 +53,20 @@
         <form asp-action="Delete" method="post">
             <input type="hidden" asp-for="Id" />
             <button type="submit" class="btn btn-danger btn-lg">Excluir Imóvel</button>
+            <div class="mt-3">
+                <a asp-action="Index" class="btn btn-outline-secondary btn-lg">Voltar para a Lista</a>
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-transparent w-100"></button>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-transparent w-100"></button>
+            </div>
         </form>
 
-        <div class="mt-3">
-            <a asp-action="Index" class="btn btn-outline-secondary btn-lg">Voltar para a Lista</a>
-        </div>
+
     </div>
 </div>
 
@@ -66,40 +75,45 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-    <style>
-        /* Estilo para o título */
-        .title-style {
-            font-size: 36px;
-            font-weight: bold;
-            color: #dc3545; /* Cor do título para destacar */
-        }
+<style>
+    .btn-transparent {
+        background-color: transparent;
+        border: transparent; /* Ajuste a cor da borda conforme necessário */
+        color: #000; /* Cor do texto (ajuste conforme desejado) */
+    }
+    /* Estilo para o título */
+    .title-style {
+        font-size: 36px;
+        font-weight: bold;
+        color: #dc3545; /* Cor do título para destacar */
+    }
 
-        /* Estilo para as informações do imóvel */
-        .dl-row dt {
-            font-weight: bold;
-            color: #007bff;
-        }
+    /* Estilo para as informações do imóvel */
+    .dl-row dt {
+        font-weight: bold;
+        color: #007bff;
+    }
 
-        .dl-row dd {
-            font-size: 1.1rem;
-        }
+    .dl-row dd {
+        font-size: 1.1rem;
+    }
 
-        /* Estilo para o botão de exclusão */
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
-            font-weight: bold;
-        }
+    /* Estilo para o botão de exclusão */
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        font-weight: bold;
+    }
 
-        /* Estilo para o botão de voltar */
-        .btn-outline-secondary {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+    /* Estilo para o botão de voltar */
+    .btn-outline-secondary {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
 
-        /* Estilo para a borda e sombra do box */
-        .border {
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    /* Estilo para a borda e sombra do box */
+    .border {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
