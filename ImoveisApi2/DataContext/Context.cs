@@ -11,6 +11,7 @@ public class Context : DbContext {
     public DbSet<Cliente> Cliente { get; set; }
     public DbSet<Vendedor> Vendedor { get; set; }
     public DbSet<Imovel> Imovel { get; set; }
+    public object Imoveis { get; internal set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
         base.OnConfiguring(optionsBuilder);

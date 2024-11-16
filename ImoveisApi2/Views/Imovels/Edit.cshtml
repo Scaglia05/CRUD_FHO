@@ -1,4 +1,7 @@
-﻿@model Imovel
+﻿@using System.ComponentModel
+@using System.Reflection
+@using static ImoveisApi2.Models.Enums
+@model Imovel
 
 @{
     ViewData["Title"] = "Editar Imóvel";
@@ -11,49 +14,57 @@
         <h4 class="text-primary">Informações do Imóvel</h4>
         <hr />
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
             <input type="hidden" asp-for="Id" />
 
             <div class="form-group">
                 <label asp-for="Endereco_Imovel" class="control-label font-weight-bold"></label>
                 <input asp-for="Endereco_Imovel" class="form-control" placeholder="Endereço do imóvel" />
-                <span asp-validation-for="Endereco_Imovel" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="AreaTotal_Imovel" class="control-label font-weight-bold"></label>
                 <input asp-for="AreaTotal_Imovel" class="form-control" placeholder="Área total do imóvel (m²)" />
-                <span asp-validation-for="AreaTotal_Imovel" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Tipo" class="control-label font-weight-bold"></label>
+            <!-- Campo Tipo -->
+            <div class="form-group mb-3">
+                <label asp-for="Tipo" class="control-label">Tipo de Imóvel</label>
                 <select asp-for="Tipo" class="form-control">
-                    <option value="">Selecione o tipo de imóvel</option>
-                    <option value="Casa">Casa</option>
-                    <option value="Apartamento">Apartamento</option>
-                    <option value="Comercial">Comercial</option>
-                    <option value="Terreno">Terreno</option>
+                    <option value="">Selecione o tipo</option>
+                    @foreach (var tipo in Enum.GetValues(typeof(Tipo_Imovel))) {
+                        var tipoDescricao = tipo.GetType()
+                        .GetMember(tipo.ToString())
+                        .FirstOrDefault()?
+                        .GetCustomAttribute<DescriptionAttribute>()?
+                        .Description ?? tipo.ToString();
+                        <option value="@tipo">@tipoDescricao</option>
+                    }
                 </select>
-                <span asp-validation-for="Tipo" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Status" class="control-label font-weight-bold"></label>
+            <!-- Campo Status -->
+            <div class="form-group mb-3">
+                <label asp-for="Status" class="control-label">Status</label>
                 <select asp-for="Status" class="form-control">
-                    <option value="">Selecione o status do imóvel</option>
-                    <option value="Disponível">Disponível</option>
-                    <option value="Indisponível">Indisponível</option>
+                    <option value="">Selecione o status</option>
+                    @foreach (var status in Enum.GetValues(typeof(Status_Imovel))) {
+                        var statusDescricao = status.GetType()
+                        .GetMember(status.ToString())
+                        .FirstOrDefault()?
+                        .GetCustomAttribute<DescriptionAttribute>()?
+                        .Description ?? status.ToString();
+                        <option value="@status">@statusDescricao</option>
+                    }
                 </select>
-                <span asp-validation-for="Status" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="ValorTotal" class="control-label font-weight-bold"></label>
                 <input asp-for="ValorTotal" class="form-control" placeholder="Valor total do imóvel" />
-                <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <button type="submit" class="btn btn-transparent w-100"></button>
+            </div>
             <div class="form-group text-center">
                 <input type="submit" value="Salvar" class="btn btn-success btn-lg" />
             </div>
@@ -70,12 +81,6 @@
     </div>
 
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
 
 <style>
     .btn-transparent {
@@ -119,4 +124,3 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 </style>
-

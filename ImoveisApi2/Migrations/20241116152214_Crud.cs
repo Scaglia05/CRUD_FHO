@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ImoveisApi2.Migrations
 {
     /// <inheritdoc />
-    public partial class CrudImoveisInitial : Migration
+    public partial class Crud : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,18 +31,21 @@ namespace ImoveisApi2.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Proprietario",
+                name: "Imovel",
                 columns: table => new
                 {
-                    Id_Proprietario = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome_Proprietario = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CPF_Proprietario = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefone_Proprietario = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id_Vendedor = table.Column<int>(type: "int", nullable: false),
+                    Endereco_Imovel = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AreaTotal_Imovel = table.Column<decimal>(type: "decimal(10,3)", precision: 10, scale: 3, nullable: false),
+                    Tipo = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    ValorTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Proprietario", x => x.Id_Proprietario);
+                    table.PrimaryKey("PK_Imovel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,36 +56,12 @@ namespace ImoveisApi2.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome_Vendedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CRECI_Vendedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefone_Vendedor = table.Column<int>(type: "int", nullable: false),
+                    Telefone_Vendedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email_Vendedor = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vendedor", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Imovel",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Proprietario = table.Column<int>(type: "int", nullable: false),
-                    Endereco_Imovel = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AreaTotal_Imovel = table.Column<decimal>(type: "decimal(10,3)", precision: 10, scale: 3, nullable: false),
-                    Tipo = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    ValorTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Imovel", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Imovel_Proprietario_Proprietario",
-                        column: x => x.Proprietario,
-                        principalTable: "Proprietario",
-                        principalColumn: "Id_Proprietario",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -91,13 +70,8 @@ namespace ImoveisApi2.Migrations
                 values: new object[,]
                 {
                     { 1, "123.456.789.10", new DateOnly(2002, 10, 10), "cliente@gmail.com", "Av.12a, Araras-SP", "Guilherme" },
-                    { 2, "407.237.896-81", new DateOnly(2006, 5, 10), "Isis75@live.com", "850 Melissa Rodovia, Praia Grande, Paraguai", "Isabelly Albuquerque" }
+                    { 2, "382.377.622-31", new DateOnly(2021, 7, 23), "Enzo_Nogueira@gmail.com", "11299 Oliveira Rodovia, Olinda, Canadá", "Liz Oliveira" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Imovel_Proprietario",
-                table: "Imovel",
-                column: "Proprietario");
         }
 
         /// <inheritdoc />
@@ -111,9 +85,6 @@ namespace ImoveisApi2.Migrations
 
             migrationBuilder.DropTable(
                 name: "Vendedor");
-
-            migrationBuilder.DropTable(
-                name: "Proprietario");
         }
     }
 }

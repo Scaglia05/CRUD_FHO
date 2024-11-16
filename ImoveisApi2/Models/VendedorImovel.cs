@@ -8,10 +8,10 @@ namespace ImoveisApi2.Models {
         public int Id { get; set; }
 
         [ForeignKey(nameof(Vendedor))]
-        public Vendedor Vendedor_Id { get; set; }
+        public int Vendedor_Id { get; set; }
 
         [ForeignKey(nameof(Imovel))]
-        public Imovel Imovel_Id { get; set; }
+        public int Imovel_Id { get; set; }
 
     }
 }

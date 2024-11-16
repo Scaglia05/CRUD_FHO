@@ -9,7 +9,13 @@ namespace ImoveisApi2.Models {
             Casa = 1,
 
             [Description("Apartamento")]
-            Apartamento = 2
+            Apartamento = 2,
+
+            [Description("Comercial")]
+            Comercial = 3,
+
+            [Description("Terreno")]
+            Terreno = 4
         }
 
         public enum Status_Imovel {

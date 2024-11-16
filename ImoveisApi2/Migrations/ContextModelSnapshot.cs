@@ -65,11 +65,11 @@ namespace ImoveisApi2.Migrations
                         new
                         {
                             Id = 2,
-                            CPF = "407.237.896-81",
-                            DataNascimento = new DateOnly(2006, 5, 10),
-                            Email_Cliente = "Isis75@live.com",
-                            Endereco = "850 Melissa Rodovia, Praia Grande, Paraguai",
-                            Nome = "Isabelly Albuquerque"
+                            CPF = "382.377.622-31",
+                            DataNascimento = new DateOnly(2021, 7, 23),
+                            Email_Cliente = "Enzo_Nogueira@gmail.com",
+                            Endereco = "11299 Oliveira Rodovia, Olinda, Canadá",
+                            Nome = "Liz Oliveira"
                         });
                 });
 
@@ -89,7 +89,7 @@ namespace ImoveisApi2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Proprietario")
+                    b.Property<int>("Id_Vendedor")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -103,34 +103,7 @@ namespace ImoveisApi2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Proprietario");
-
                     b.ToTable("Imovel");
-                });
-
-            modelBuilder.Entity("ImoveisApi2.Models.Proprietario", b =>
-                {
-                    b.Property<int>("Id_Proprietario")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Proprietario"));
-
-                    b.Property<string>("CPF_Proprietario")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nome_Proprietario")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefone_Proprietario")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id_Proprietario");
-
-                    b.ToTable("Proprietario");
                 });
 
             modelBuilder.Entity("ImoveisApi2.Models.Vendedor", b =>
@@ -153,23 +126,13 @@ namespace ImoveisApi2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Telefone_Vendedor")
-                        .HasColumnType("int");
+                    b.Property<string>("Telefone_Vendedor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Vendedor");
-                });
-
-            modelBuilder.Entity("ImoveisApi2.Models.Imovel", b =>
-                {
-                    b.HasOne("ImoveisApi2.Models.Proprietario", "Id_Proprietario")
-                        .WithMany()
-                        .HasForeignKey("Proprietario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Id_Proprietario");
                 });
 #pragma warning restore 612, 618
         }
